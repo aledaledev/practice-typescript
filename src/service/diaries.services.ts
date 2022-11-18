@@ -1,5 +1,6 @@
 import diaryData from './diaries.json'
-import { DiaryEntry, NewDiaryEntry, NonSensitiveInfoDiaryEntry, Visibility, Weather } from '../types'
+import { DiaryEntry, NewDiaryEntry, NonSensitiveInfoDiaryEntry } from '../types'
+import { Visibility, Weather } from '../enums'
 
 const diaries: DiaryEntry[] = diaryData as DiaryEntry[]
 
@@ -34,6 +35,22 @@ export const addDiary = (newDiaryEntry: NewDiaryEntry): DiaryEntry => {
   return newDiary
 }
 
+const isVisibility = (param: any): boolean => {
+  return Object.values(Visibility).includes(param)
+}
+
+const isWeather = (param: any): boolean => {
+  return Object.values(Weather).includes(param)
+}
+
+const isString = (str: string): boolean => {
+  return typeof str === 'string'
+}
+
+const isDate = (date: string): boolean => {
+  return Boolean(Date.parse(date))
+}
+
 const parseComment = (commentFromReq: any): string => {
   if (!isString(commentFromReq)) {
     throw new Error('Incorrect or missing comment')
@@ -60,22 +77,6 @@ const parseVisibility = (visibilityFromReq: any): Visibility => {
     throw new Error('Incorrect or missing visibility')
   }
   return visibilityFromReq
-}
-
-const isVisibility = (param: any): boolean => {
-  return Object.values(Visibility).includes(param)
-}
-
-const isWeather = (param: any): boolean => {
-  return Object.values(Weather).includes(param)
-}
-
-const isString = (str: string): boolean => {
-  return typeof str === 'string'
-}
-
-const isDate = (date: string): boolean => {
-  return Boolean(Date.parse(date))
 }
 
 // entradas mas controladas

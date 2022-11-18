@@ -1,21 +1,7 @@
+import { Visibility, Weather } from './enums'
 // export type Weather = 'sunny' | 'rainy' | 'cloudy' | 'windy' | 'stormy'
 // export type Visibility = 'great' | 'good' | 'ok' | 'poor'
-
-// enums se pueden usar como constantes
-export enum Weather {
-  Sunny = 'sunny',
-  Rainy = 'rainy',
-  Cloudy = 'cloudy',
-  Windy = 'windy',
-  Stormy = 'stormy'
-}
-
-export enum Visibility {
-  Great = 'great',
-  Good = 'good',
-  Ok = 'ok',
-  Poor = 'poor'
-}
+// pasamos a usar enums para crear constantes
 
 //  para ser extendida
 export interface DiaryEntry {
